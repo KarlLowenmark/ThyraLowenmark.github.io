@@ -22,6 +22,8 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
+  site: 'https://karllowenmark.github.io',
+  base: '/ThyraLowenmark.github.io',
   output: 'static',
 
   integrations: [
