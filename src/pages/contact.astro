@@ -1,79 +1,69 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
+import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
   title: 'Contact',
+  description:
+    'Contact Thyra Löwenmark for interior styling and consultation. Share photos and goals to get a recommended next step.',
 };
+
+// Replace placeholders
+const EMAIL = 'thyra@example.com';
+const INSTAGRAM_URL = 'https://instagram.com/thyra';
+const BOOKING_URL = 'https://calendly.com/your-link'; // optional
 ---
 
-<Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+<PageLayout metadata={metadata}>
+  <section class="mx-auto max-w-5xl px-6 py-14 md:py-20">
+    <h1 class="text-4xl font-semibold md:text-5xl">Contact</h1>
+    <p class="mt-5 max-w-3xl text-lg opacity-90">
+      The fastest way to get started is to share a few photos and what you want to improve. Thyra will suggest the best service and next step.
+    </p>
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <div class="rounded-3xl border p-8">
+        <h2 class="text-2xl font-semibold">Message Thyra</h2>
+        <p class="mt-3 text-sm opacity-90">
+          Include: (1) your city, (2) which room(s), (3) timeline, (4) budget range, and (5) what feels most challenging.
+        </p>
 
-  <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
+        <div class="mt-6 space-y-3 text-sm">
+          <p><strong>Email:</strong> <a class="underline" href={`mailto:${EMAIL}?subject=Interior%20consultation%20request`}>{EMAIL}</a></p>
+          <p><strong>Instagram:</strong> <a class="underline" href={INSTAGRAM_URL} target="_blank" rel="noreferrer">Send a DM</a></p>
+          <p>
+            <strong>Booking:</strong>{' '}
+            <a class="underline" href={BOOKING_URL} target="_blank" rel="noreferrer">Schedule a call</a>
+            <span class="opacity-75"> (optional)</span>
+          </p>
+        </div>
 
-  <!-- Features2 Widget ************** -->
+        <div class="mt-8 rounded-2xl border p-5">
+          <p class="text-sm uppercase tracking-widest opacity-70">Helpful to attach</p>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-sm opacity-90">
+            <li>3–8 photos (daylight, wide angles)</li>
+            <li>Rough measurements (if available)</li>
+            <li>Any inspiration links (Pinterest / Instagram saves)</li>
+          </ul>
+        </div>
+      </div>
 
-  <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-  />
-</Layout>
+      <div class="rounded-3xl border p-8">
+        <h2 class="text-2xl font-semibold">What happens next</h2>
+        <ol class="mt-5 space-y-4 text-sm opacity-90">
+          <li><strong>1)</strong> Thyra reviews your message and clarifies missing details.</li>
+          <li><strong>2)</strong> You select a service and schedule a session.</li>
+          <li><strong>3)</strong> You receive a clear plan and prioritized next steps.</li>
+        </ol>
+
+        <div class="mt-8 rounded-2xl border p-5">
+          <p class="text-sm uppercase tracking-widest opacity-70">See examples</p>
+          <p class="mt-3 text-sm opacity-90">Browse the portfolio for style direction and typical outcomes.</p>
+          <a class="mt-5 inline-block rounded-2xl border px-6 py-3 font-medium hover:opacity-90" href={getPermalink('portfolio')}>
+            View portfolio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

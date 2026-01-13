@@ -1,224 +1,93 @@
 ---
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import Layout from '~/layouts/PageLayout.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
+import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
   title: 'Services',
+  description:
+    'Interior styling and consultation services by Thyra Löwenmark. Clear deliverables, practical guidance, and a cohesive plan for your home.',
 };
 ---
 
-<Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+<PageLayout metadata={metadata}>
+  <section class="mx-auto max-w-6xl px-6 py-14 md:py-20">
+    <h1 class="text-4xl font-semibold md:text-5xl">Services</h1>
+    <p class="mt-5 max-w-3xl text-lg opacity-90">
+      Thyra’s services are designed to remove uncertainty and help you make confident decisions—whether you need quick direction
+      or a structured plan. Sessions are available remotely, and in-person by arrangement.
+    </p>
 
-  <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Image',
-    }}
-  />
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      <div class="rounded-3xl border p-6">
+        <h2 class="text-xl font-semibold">Mini Consult (60 min)</h2>
+        <p class="mt-3 text-sm opacity-90">
+          Fast clarity for one space or one design problem. Ideal when you feel stuck and need professional direction.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm opacity-90">
+          <li>Layout and flow recommendations</li>
+          <li>Palette direction (color + materials)</li>
+          <li>Lighting suggestions for warmth and function</li>
+          <li>Prioritized next steps</li>
+        </ul>
+        <p class="mt-5 text-sm opacity-75">Price: From SEK X</p>
+      </div>
 
-  <!-- Features2 Widget ************** -->
+      <div class="rounded-3xl border p-6">
+        <h2 class="text-xl font-semibold">Room Plan</h2>
+        <p class="mt-3 text-sm opacity-90">
+          A structured plan for one room, with a cohesive direction and practical guidance to execute.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm opacity-90">
+          <li>Concept direction (palette, materials, mood)</li>
+          <li>Shopping list with key product categories</li>
+          <li>Styling guidance (art, textiles, accessories)</li>
+          <li>Phasing suggestions if you want to do it over time</li>
+        </ul>
+        <p class="mt-5 text-sm opacity-75">Price: From SEK X</p>
+      </div>
 
-  <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
-    columns={3}
-    items={[
-      {
-        title: 'Educational',
-        description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
-      },
-      {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
-      },
-      {
-        title: 'E-commerce',
-        description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
-        icon: 'tabler:shopping-cart',
-      },
-      {
-        title: 'Blog',
-        description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
-      },
-      {
-        title: 'Business',
-        description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
-      },
-      {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
-      },
-    ]}
-  />
+      <div class="rounded-3xl border p-6">
+        <h2 class="text-xl font-semibold">Styling Session</h2>
+        <p class="mt-3 text-sm opacity-90">
+          Hands-on support to make your space feel finished—best for final adjustments and photo-ready polish.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm opacity-90">
+          <li>Placement and styling of what you already own</li>
+          <li>Textiles, art, and finishing touches</li>
+          <li>Optional add-on: curated purchases</li>
+        </ul>
+        <p class="mt-5 text-sm opacity-75">Price: From SEK X</p>
+      </div>
+    </div>
 
-  <!-- Content Widget **************** -->
+    <div class="mt-14 grid gap-10 md:grid-cols-2">
+      <div class="rounded-3xl border p-8">
+        <h3 class="text-2xl font-semibold">How it works</h3>
+        <ol class="mt-5 space-y-4 text-sm opacity-90">
+          <li><strong>1) Intake:</strong> photos, goals, inspiration, and budget range.</li>
+          <li><strong>2) Session:</strong> define priorities and direction.</li>
+          <li><strong>3) Deliverables:</strong> a plan with clear next steps and curated options.</li>
+        </ol>
+      </div>
 
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'High-Quality Designs',
-        description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
-      },
-      {
-        title: 'Customization Tools',
-        description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
-      },
-      {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
-    </Fragment>
-  </Content>
+      <div class="rounded-3xl border p-8">
+        <h3 class="text-2xl font-semibold">What you’ll get</h3>
+        <ul class="mt-5 space-y-3 text-sm opacity-90">
+          <li><strong>Clarity:</strong> a prioritized action plan.</li>
+          <li><strong>Cohesion:</strong> a palette and styling direction that flows.</li>
+          <li><strong>Practicality:</strong> decisions that match function, budget, and timeline.</li>
+        </ul>
+      </div>
+    </div>
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Time Savings',
-        description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Professional Appearance',
-        description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Instant Download',
-        description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Words from real customers"
-    testimonials={[
-      {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
-        },
-      },
-      {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
-        },
-      },
-      {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
-        image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
-        },
-      },
-    ]}
-    callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/arthelokyo/astrowind',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Start exploring',
-        href: '/',
-      },
-    ]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
-  />
-</Layout>
+    <div class="mt-14 rounded-3xl border p-8 md:p-10">
+      <h3 class="text-2xl font-semibold">Not sure where to start?</h3>
+      <p class="mt-3 max-w-3xl text-sm opacity-90">
+        Send a few photos and a short description of what you want to improve. Thyra will recommend the best service.
+      </p>
+      <a class="mt-6 inline-block rounded-2xl bg-black px-6 py-3 font-medium text-white hover:opacity-90" href={getPermalink('contact')}>
+        Contact Thyra
+      </a>
+    </div>
+  </section>
+</PageLayout>
