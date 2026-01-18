@@ -1,167 +1,53 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import { getPermalink } from '~/utils/permalinks';
-
-import bgTop from '~/assets/images/portfolio/Vardagsrum-med-salongsdel-och-kamin-6.jpg';
-import bgMid from '~/assets/images/portfolio/Sovrum-2.jpg';
-import bgBottom from '~/assets/images/portfolio/K-k-med-matplats.jpg';
+import { portfolioProjects } from '~/data/portfolio';
 
 const metadata = {
-  title: 'Thyra Löwenmark Interior Design',
-  description:
-    'Interior styling and consultation focused on calm, functional spaces with warmth and cohesion. Based in Sweden, available remotely.',
+  title: 'Portfolio',
+  description: 'Selected interior styling and consultation work by Thyra Löwenmark.',
 };
-
-// Reusable style helper
-const bgStyle = (img) =>
-  `background-image: url(${img.src}); background-size: cover; background-position: center; background-repeat: no-repeat;`;
 ---
 
 <PageLayout metadata={metadata}>
-  <!-- SECTION 1: HERO (Top background) -->
-  <section class="relative" style={bgStyle(bgTop)}>
-    <div class="absolute inset-0 bg-black/45"></div>
-    <div class="relative mx-auto max-w-6xl px-6 py-14 md:py-20 min-h-[calc(100vh-4rem)] flex items-center">
-      <div class="grid gap-10 md:grid-cols-2 md:items-center w-full">
-        <div>
-          <p class="text-sm uppercase tracking-widest text-white/80">Interior styling & consultation</p>
-          <h1 class="mt-3 text-4xl font-semibold leading-tight text-white md:text-5xl">
-            Calm, functional interiors—designed around how you live.
-          </h1>
-          <p class="mt-5 text-lg text-white/90">
-            Thyra helps you create a cohesive home through practical guidance on layout, lighting, color, and styling.
-            You’ll get clear next steps, curated options, and a plan you can execute with confidence.
-          </p>
+  <section class="mx-auto max-w-6xl px-6 py-14 md:py-20">
+    <h1 class="text-4xl font-semibold md:text-5xl">Portfolio</h1>
+    <p class="mt-5 max-w-3xl text-lg opacity-90">
+      A selection of work and outcomes. Thyra’s approach prioritizes function and calm—then builds warmth through texture,
+      lighting, and intentional details.
+    </p>
 
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              class="rounded-2xl border border-white/60 bg-white/10 px-6 py-3 text-center font-medium text-white hover:bg-white/20"
-              href={getPermalink('portfolio')}
-            >
-              View portfolio
-            </a>
-            <a
-              class="rounded-2xl bg-white px-6 py-3 text-center font-medium text-black hover:opacity-90"
-              href={getPermalink('contact')}
-            >
-              Book a consultation
-            </a>
-          </div>
-
-          <div class="mt-10 grid gap-4 sm:grid-cols-3">
-            <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
-              <p class="text-sm uppercase tracking-widest text-white/70">Clarity</p>
-              <p class="mt-2 text-sm text-white/85">A prioritized action plan—no overwhelm.</p>
-            </div>
-            <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
-              <p class="text-sm uppercase tracking-widest text-white/70">Cohesion</p>
-              <p class="mt-2 text-sm text-white/85">Palette and styling that flows room to room.</p>
-            </div>
-            <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
-              <p class="text-sm uppercase tracking-widest text-white/70">Practical</p>
-              <p class="mt-2 text-sm text-white/85">Decisions grounded in budget, function, and timeline.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Optional right card: remove if you want the background to dominate -->
-        <div class="rounded-3xl border border-white/20 bg-white/10 p-4">
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {portfolioProjects.map((p) => (
+        <a class="rounded-3xl border p-5 hover:opacity-95" href={getPermalink(`/portfolio/${p.slug}`)}>
           <img
-            class="aspect-[4/5] w-full rounded-2xl object-cover"
-            src={getPermalink('images/portfolio/hero-01.jpg', 'asset')}
-            alt="Interior styling example (placeholder)"
+            class="aspect-[16/11] w-full rounded-2xl object-cover"
+            src={getPermalink(p.coverImage, 'asset')}
+            alt={`${p.title} — cover`}
             loading="lazy"
           />
-          <p class="mt-3 text-sm text-white/75">
-            Optional: remove this block if you want only the background image.
-          </p>
-        </div>
-      </div>
+          <div class="mt-4">
+            <h2 class="text-lg font-semibold">{p.title}</h2>
+            <p class="mt-2 text-sm opacity-90">{p.summary}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {p.tags.map((t) => (
+                <span class="rounded-full border px-3 py-1 text-xs opacity-90">{t}</span>
+              ))}
+            </div>
+            <p class="mt-4 text-sm underline">View details</p>
+          </div>
+        </a>
+      ))}
     </div>
-  </section>
 
-  <!-- SECTION 2: PROCESS (Middle background) -->
-  <section class="relative" style={bgStyle(bgMid)}>
-    <div class="absolute inset-0 bg-black/45"></div>
-    <div class="relative mx-auto max-w-6xl px-6 py-14 md:py-20 min-h-[70vh]">
-      <h2 class="text-3xl font-semibold text-white">A simple process</h2>
-      <p class="mt-3 max-w-3xl text-white/90">
-        Thyra’s approach is designed to be efficient: define the direction, prioritize changes, then execute with clarity.
+    <div class="mt-12 rounded-3xl border p-8">
+      <h2 class="text-2xl font-semibold">Want a plan for your space?</h2>
+      <p class="mt-3 max-w-3xl text-sm opacity-90">
+        The fastest way to make progress is a focused consultation. Bring photos, questions, and constraints—leave with a plan.
       </p>
-
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
-        <div class="rounded-3xl border border-white/20 bg-white/10 p-6">
-          <p class="text-sm uppercase tracking-widest text-white/70">1) Discover</p>
-          <p class="mt-2 text-sm text-white/90">
-            You share photos, goals, constraints, and inspiration. We align on what “better” means for you.
-          </p>
-        </div>
-        <div class="rounded-3xl border border-white/20 bg-white/10 p-6">
-          <p class="text-sm uppercase tracking-widest text-white/70">2) Plan</p>
-          <p class="mt-2 text-sm text-white/90">
-            We define layout priorities, palette direction, and lighting improvements—then outline clear next steps.
-          </p>
-        </div>
-        <div class="rounded-3xl border border-white/20 bg-white/10 p-6">
-          <p class="text-sm uppercase tracking-widest text-white/70">3) Style</p>
-          <p class="mt-2 text-sm text-white/90">
-            You receive styling guidance and curated options, so the space feels cohesive and finished.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 3: FEATURED + CTA (Bottom background) -->
-  <section class="relative" style={bgStyle(bgBottom)}>
-    <div class="absolute inset-0 bg-black/45"></div>
-    <div class="relative">
-      <section class="mx-auto max-w-6xl px-6 py-14 md:py-20">
-        <div class="flex items-end justify-between gap-6">
-          <div>
-            <h2 class="text-3xl font-semibold text-white">Featured work</h2>
-            <p class="mt-3 text-white/90">Case studies that explain decisions, not only visuals.</p>
-          </div>
-          <a class="hidden text-sm underline text-white md:block" href={getPermalink('portfolio')}>See all</a>
-        </div>
-
-        <div class="mt-8 grid gap-6 md:grid-cols-2">
-          <a class="rounded-3xl border border-white/20 bg-white/10 p-5 hover:opacity-95" href={getPermalink('portfolio/living-room-refresh')}>
-            <img class="aspect-[16/10] w-full rounded-2xl object-cover" src={getPermalink('images/portfolio/living-room-01.jpg', 'asset')} alt="Living room refresh (placeholder)" loading="lazy" />
-            <div class="mt-4">
-              <h3 class="text-xl font-semibold text-white">Living room refresh</h3>
-              <p class="mt-1 text-sm text-white/85">Warm neutrals, improved flow, and layered lighting for calm everyday living.</p>
-              <p class="mt-3 text-sm underline text-white">Read case study</p>
-            </div>
-          </a>
-
-          <a class="rounded-3xl border border-white/20 bg-white/10 p-5 hover:opacity-95" href={getPermalink('portfolio/kitchen-refresh')}>
-            <img class="aspect-[16/10] w-full rounded-2xl object-cover" src={getPermalink('images/portfolio/kitchen-01.jpg', 'asset')} alt="Kitchen refresh (placeholder)" loading="lazy" />
-            <div class="mt-4">
-              <h3 class="text-xl font-semibold text-white">Kitchen refresh</h3>
-              <p class="mt-1 text-sm text-white/85">High-impact updates: lighting, hardware, and a cohesive palette.</p>
-              <p class="mt-3 text-sm underline text-white">Read case study</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="mx-auto max-w-6xl px-6 pb-20">
-        <div class="rounded-3xl border border-white/20 bg-white/10 p-8 md:p-12">
-          <h2 class="text-3xl font-semibold text-white">Ready for a calmer, more cohesive home?</h2>
-          <p class="mt-3 max-w-2xl text-white/90">
-            Share a few photos and your goals. Thyra will recommend the best starting point and a clear next step.
-          </p>
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a class="rounded-2xl bg-white px-6 py-3 text-center font-medium text-black hover:opacity-90" href={getPermalink('contact')}>
-              Book a consultation
-            </a>
-            <a class="rounded-2xl border border-white/60 bg-white/10 px-6 py-3 text-center font-medium text-white hover:bg-white/20" href={getPermalink('services')}>
-              Explore services
-            </a>
-          </div>
-        </div>
-      </section>
+      <a class="mt-6 inline-block rounded-2xl bg-black px-6 py-3 font-medium text-white hover:opacity-90" href={getPermalink('contact')}>
+        Book a consultation
+      </a>
     </div>
   </section>
 </PageLayout>
