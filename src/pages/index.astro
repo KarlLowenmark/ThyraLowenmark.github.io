@@ -2,165 +2,199 @@
 import PageLayout from '~/layouts/PageLayout.astro';
 import { getPermalink } from '~/utils/permalinks';
 
+import bgTop from '~/assets/images/portfolio/Vardagsrum-med-salongsdel-och-kamin-6.jpg';
+import bgMid from '~/assets/images/portfolio/Utomhusmilj-er-7.jpg';
+import bgBottom from '~/assets/images/portfolio/K-k-med-matplats.jpg';
+
 const metadata = {
   title: 'Thyra Löwenmark Interior Design',
   description:
     'Interior styling and consultation focused on calm, functional spaces with warmth and cohesion. Based in Sweden, available remotely.',
 };
+
+const bgStyle = (img) =>
+  `background-image: url(${img.src}); background-size: cover; background-position: center; background-repeat: no-repeat;`;
 ---
 
 <PageLayout metadata={metadata}>
-  <!-- HERO -->
-  <section class="mx-auto max-w-6xl px-6 py-14 md:py-20">
-    <div class="grid gap-10 md:grid-cols-2 md:items-center">
-      <div>
-        <p class="text-sm uppercase tracking-widest opacity-70">Interior styling & consultation</p>
-        <h1 class="mt-3 text-4xl font-semibold leading-tight md:text-5xl">
-          Calm, functional interiors—designed around how you live.
-        </h1>
-        <p class="mt-5 text-lg opacity-90">
-          Thyra helps you create a cohesive home through practical guidance on layout, lighting, color, and styling.
-          You’ll get clear next steps, curated options, and a plan you can execute with confidence.
-        </p>
+  <!-- SECTION 1: HERO -->
+  <section class="relative" style={bgStyle(bgTop)}>
+    <!-- Overlay (must not capture clicks) -->
+    <div class="absolute inset-0 bg-black/45 pointer-events-none"></div>
 
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            class="rounded-2xl border px-6 py-3 text-center font-medium hover:opacity-90"
-            href={getPermalink('portfolio')}
-          >
-            View portfolio
-          </a>
-          <a
-            class="rounded-2xl bg-black px-6 py-3 text-center font-medium text-white hover:opacity-90"
-            href={getPermalink('contact')}
-          >
-            Book a consultation
-          </a>
-        </div>
-
-        <div class="mt-10 grid gap-4 sm:grid-cols-3">
-          <div class="rounded-2xl border p-4">
-            <p class="text-sm uppercase tracking-widest opacity-70">Clarity</p>
-            <p class="mt-2 text-sm opacity-90">A prioritized action plan—no overwhelm.</p>
-          </div>
-          <div class="rounded-2xl border p-4">
-            <p class="text-sm uppercase tracking-widest opacity-70">Cohesion</p>
-            <p class="mt-2 text-sm opacity-90">Palette and styling that flows room to room.</p>
-          </div>
-          <div class="rounded-2xl border p-4">
-            <p class="text-sm uppercase tracking-widest opacity-70">Practical</p>
-            <p class="mt-2 text-sm opacity-90">Decisions grounded in budget, function, and timeline.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="rounded-3xl border p-4">
-        <img
-          class="aspect-[4/5] w-full rounded-2xl object-cover"
-          src={getPermalink('images/portfolio/hero-01.jpg', 'asset')}
-          alt="Interior styling example (placeholder)"
-          loading="lazy"
-        />
-        <p class="mt-3 text-sm opacity-75">
-          Replace with a strong signature image (a living room or kitchen works best).
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="mx-auto max-w-6xl px-6 py-14">
-    <h2 class="text-3xl font-semibold">A simple process</h2>
-    <p class="mt-3 max-w-3xl opacity-90">
-      Thyra’s approach is designed to be efficient: define the direction, prioritize changes, then execute with clarity.
-    </p>
-
-    <div class="mt-8 grid gap-6 md:grid-cols-3">
-      <div class="rounded-3xl border p-6">
-        <p class="text-sm uppercase tracking-widest opacity-70">1) Discover</p>
-        <p class="mt-2 text-sm opacity-90">
-          You share photos, goals, constraints, and inspiration. We align on what “better” means for you.
-        </p>
-      </div>
-      <div class="rounded-3xl border p-6">
-        <p class="text-sm uppercase tracking-widest opacity-70">2) Plan</p>
-        <p class="mt-2 text-sm opacity-90">
-          We define layout priorities, palette direction, and lighting improvements—then outline clear next steps.
-        </p>
-      </div>
-      <div class="rounded-3xl border p-6">
-        <p class="text-sm uppercase tracking-widest opacity-70">3) Style</p>
-        <p class="mt-2 text-sm opacity-90">
-          You receive styling guidance and curated options, so the space feels cohesive and finished.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED PROJECTS -->
-  <section class="mx-auto max-w-6xl px-6 py-14">
-    <div class="flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-3xl font-semibold">Featured work</h2>
-        <p class="mt-3 opacity-90">Case studies that explain decisions, not only visuals.</p>
-      </div>
-      <a class="hidden text-sm underline md:block" href={getPermalink('portfolio')}>See all</a>
-    </div>
-
-    <div class="mt-8 grid gap-6 md:grid-cols-2">
-      <a class="rounded-3xl border p-5 hover:opacity-95" href={getPermalink('portfolio/living-room-refresh')}>
-        <img
-          class="aspect-[16/10] w-full rounded-2xl object-cover"
-          src={getPermalink('images/portfolio/dalkarlsa/K-k-med-matplats.jpg', 'asset')}
-          alt="Living room refresh (placeholder)"
-          loading="lazy"
-        />
-        <div class="mt-4">
-          <h3 class="text-xl font-semibold">Living room refresh</h3>
-          <p class="mt-1 text-sm opacity-85">
-            Warm neutrals, improved flow, and layered lighting for calm everyday living.
+    <div class="relative mx-auto max-w-6xl px-6 py-14 md:py-20 min-h-[calc(100vh-4rem)] flex items-center">
+      <div class="grid gap-10 md:grid-cols-2 md:items-center w-full">
+        <div>
+          <p class="text-sm uppercase tracking-widest text-white/80">Interior styling & consultation</p>
+          <h1 class="mt-3 text-4xl font-semibold leading-tight text-white md:text-5xl">
+            Calm, functional interiors—designed around how you live.
+          </h1>
+          <p class="mt-5 text-lg text-white/90">
+            Thyra helps you create a cohesive home through practical guidance on layout, lighting, color, and styling.
+            You’ll get clear next steps, curated options, and a plan you can execute with confidence.
           </p>
-          <p class="mt-3 text-sm underline">Read case study</p>
-        </div>
-      </a>
 
-      <a class="rounded-3xl border p-5 hover:opacity-95" href={getPermalink('portfolio/kitchen-refresh')}>
-        <img
-          class="aspect-[16/10] w-full rounded-2xl object-cover"
-          src={getPermalink('images/portfolio/dalkarlsa/K-k-med-matplats.jpg', 'asset')}
-          alt="Kitchen refresh (placeholder)"
-          loading="lazy"
-        />
-        <div class="mt-4">
-          <h3 class="text-xl font-semibold">Kitchen refresh</h3>
-          <p class="mt-1 text-sm opacity-85">High-impact updates: lighting, hardware, and a cohesive palette.</p>
-          <p class="mt-3 text-sm underline">Read case study</p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              class="rounded-2xl border border-white/60 bg-white/10 px-6 py-3 text-center font-medium text-white hover:bg-white/20"
+              href={getPermalink('portfolio')}
+            >
+              View portfolio
+            </a>
+            <a
+              class="rounded-2xl bg-white px-6 py-3 text-center font-medium text-black hover:opacity-90"
+              href={getPermalink('contact')}
+            >
+              Book a consultation
+            </a>
+          </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
+              <p class="text-sm uppercase tracking-widest text-white/70">Clarity</p>
+              <p class="mt-2 text-sm text-white/85">A prioritized action plan—no overwhelm.</p>
+            </div>
+            <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
+              <p class="text-sm uppercase tracking-widest text-white/70">Cohesion</p>
+              <p class="mt-2 text-sm text-white/85">Palette and styling that flows room to room.</p>
+            </div>
+            <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
+              <p class="text-sm uppercase tracking-widest text-white/70">Practical</p>
+              <p class="mt-2 text-sm text-white/85">Decisions grounded in budget, function, and timeline.</p>
+            </div>
+          </div>
         </div>
-      </a>
+
+        <!-- Optional right card -->
+        <div class="rounded-3xl border border-white/20 bg-white/10 p-4">
+          <img
+            class="aspect-[4/5] w-full rounded-2xl object-cover"
+            src={getPermalink('images/portfolio/hero-01.jpg', 'asset')}
+            alt="Interior styling example (placeholder)"
+            loading="lazy"
+          />
+          <p class="mt-3 text-sm text-white/75">
+            Optional: remove this card if you want only the background image.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="mx-auto max-w-6xl px-6 pb-20">
-    <div class="rounded-3xl border p-8 md:p-12">
-      <h2 class="text-3xl font-semibold">Ready for a calmer, more cohesive home?</h2>
-      <p class="mt-3 max-w-2xl opacity-90">
-        Share a few photos and your goals. Thyra will recommend the best starting point and a clear next step.
+  <!-- SECTION 2: PROCESS -->
+  <section class="relative" style={bgStyle(bgMid)}>
+    <div class="absolute inset-0 bg-black/45 pointer-events-none"></div>
+
+    <div class="relative mx-auto max-w-6xl px-6 py-14 md:py-20 min-h-[70vh]">
+      <h2 class="text-3xl font-semibold text-white">A simple process</h2>
+      <p class="mt-3 max-w-3xl text-white/90">
+        Thyra’s approach is designed to be efficient: define the direction, prioritize changes, then execute with clarity.
       </p>
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a
-          class="rounded-2xl bg-black px-6 py-3 text-center font-medium text-white hover:opacity-90"
-          href={getPermalink('contact')}
-        >
-          Book a consultation
-        </a>
-        <a
-          class="rounded-2xl border px-6 py-3 text-center font-medium hover:opacity-90"
-          href={getPermalink('services')}
-        >
-          Explore services
-        </a>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div class="rounded-3xl border border-white/20 bg-white/10 p-6">
+          <p class="text-sm uppercase tracking-widest text-white/70">1) Discover</p>
+          <p class="mt-2 text-sm text-white/90">
+            You share photos, goals, constraints, and inspiration. We align on what “better” means for you.
+          </p>
+        </div>
+        <div class="rounded-3xl border border-white/20 bg-white/10 p-6">
+          <p class="text-sm uppercase tracking-widest text-white/70">2) Plan</p>
+          <p class="mt-2 text-sm text-white/90">
+            We define layout priorities, palette direction, and lighting improvements—then outline clear next steps.
+          </p>
+        </div>
+        <div class="rounded-3xl border border-white/20 bg-white/10 p-6">
+          <p class="text-sm uppercase tracking-widest text-white/70">3) Style</p>
+          <p class="mt-2 text-sm text-white/90">
+            You receive styling guidance and curated options, so the space feels cohesive and finished.
+          </p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FEATURED + CTA (Portfolio links are here) -->
+  <section class="relative" style={bgStyle(bgBottom)}>
+    <div class="absolute inset-0 bg-black/45 pointer-events-none"></div>
+
+    <div class="relative">
+      <!-- FEATURED PROJECTS -->
+      <section class="mx-auto max-w-6xl px-6 py-14 md:py-20">
+        <div class="flex items-end justify-between gap-6">
+          <div>
+            <h2 class="text-3xl font-semibold text-white">Featured work</h2>
+            <p class="mt-3 text-white/90">Case studies that explain decisions, not only visuals.</p>
+          </div>
+          <a class="hidden text-sm underline text-white md:block" href={getPermalink('portfolio')}>
+            See all
+          </a>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          <a
+            class="rounded-3xl border border-white/20 bg-white/10 p-5 hover:opacity-95"
+            href={getPermalink('portfolio/living-room-refresh')}
+          >
+            <img
+              class="aspect-[16/10] w-full rounded-2xl object-cover"
+              src={getPermalink('images/portfolio/dalkarlsa/Vardagsrum-med-salongsdel-och-kamin-6.jpg', 'asset')}
+              alt="Living room refresh (placeholder)"
+              loading="lazy"
+            />
+            <div class="mt-4">
+              <h3 class="text-xl font-semibold text-white">Living room refresh</h3>
+              <p class="mt-1 text-sm text-white/85">
+                Warm neutrals, improved flow, and layered lighting for calm everyday living.
+              </p>
+              <p class="mt-3 text-sm underline text-white">Read case study</p>
+            </div>
+          </a>
+
+          <a
+            class="rounded-3xl border border-white/20 bg-white/10 p-5 hover:opacity-95"
+            href={getPermalink('portfolio/kitchen-refresh')}
+          >
+            <img
+              class="aspect-[16/10] w-full rounded-2xl object-cover"
+              src={getPermalink('images/portfolio/dalkarlsa/K-k-med-matplats.jpg', 'asset')}
+              alt="Kitchen refresh (placeholder)"
+              loading="lazy"
+            />
+            <div class="mt-4">
+              <h3 class="text-xl font-semibold text-white">Kitchen refresh</h3>
+              <p class="mt-1 text-sm text-white/85">
+                High-impact updates: lighting, hardware, and a cohesive palette.
+              </p>
+              <p class="mt-3 text-sm underline text-white">Read case study</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mx-auto max-w-6xl px-6 pb-20">
+        <div class="rounded-3xl border border-white/20 bg-white/10 p-8 md:p-12">
+          <h2 class="text-3xl font-semibold text-white">Ready for a calmer, more cohesive home?</h2>
+          <p class="mt-3 max-w-2xl text-white/90">
+            Share a few photos and your goals. Thyra will recommend the best starting point and a clear next step.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              class="rounded-2xl bg-white px-6 py-3 text-center font-medium text-black hover:opacity-90"
+              href={getPermalink('contact')}
+            >
+              Book a consultation
+            </a>
+            <a
+              class="rounded-2xl border border-white/60 bg-white/10 px-6 py-3 text-center font-medium text-white hover:bg-white/20"
+              href={getPermalink('services')}
+            >
+              Explore services
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
 </PageLayout>
