@@ -8,9 +8,7 @@ export const headerData = {
     { text: 'About', href: getPermalink('/about') },
     { text: 'Contact', href: getPermalink('/contact') },
   ],
-  actions: [
-    { text: 'Book a consult', href: getPermalink('/contact') },
-  ],
+  actions: [{ text: 'Book a consult', href: getPermalink('/contact') }],
 };
 
 export const footerData = {
