@@ -1,20 +1,20 @@
 export type PortfolioProject = {
-  slug: string;                 // URL: /portfolio/<slug>
-  title: string;                // Display name
-  summary: string;              // Portfolio card summary
+  slug: string; // URL: /portfolio/<slug>
+  title: string; // Display name
+  summary: string; // Portfolio card summary
   tags: string[];
   location?: string;
   year?: string;
 
   // Images live in public/images/portfolio/<slug>/
-  coverImage: string;           // e.g. images/portfolio/<slug>/cover.jpg
-  galleryImages: string[];      // e.g. images/portfolio/<slug>/01.jpg, ...
+  coverImage: string; // e.g. images/portfolio/<slug>/cover.jpg
+  galleryImages: string[]; // e.g. images/portfolio/<slug>/01.jpg, ...
 
   // Case study content
   goal: string;
   scope: string;
   outcome: string;
-  whatChanged: string[];        // bullet list
+  whatChanged: string[]; // bullet list
 };
 
 export const portfolioProjects: PortfolioProject[] = [
@@ -94,5 +94,4 @@ export const portfolioProjects: PortfolioProject[] = [
 ];
 
 // Utility: quick lookup
-export const getProjectBySlug = (slug: string) =>
-  portfolioProjects.find((p) => p.slug === slug);
+export const getProjectBySlug = (slug: string) => portfolioProjects.find((p) => p.slug === slug);
