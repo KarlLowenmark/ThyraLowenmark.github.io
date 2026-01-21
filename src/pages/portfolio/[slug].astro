@@ -1,6 +1,6 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
-import { getPermalink } from '~/utils/permalinks';
+import { getPermalink, getAsset } from '~/utils/permalinks';
 import { portfolioProjects, getProjectBySlug } from '~/data/portfolio';
 
 export function getStaticPaths() {
@@ -32,7 +32,7 @@ const metadata = { title: project.title, description: project.summary };
     <div class="mt-10 rounded-3xl border p-4">
       <img
         class="aspect-[16/10] w-full rounded-2xl object-cover"
-        src={getPermalink(project.coverImage, 'asset')}
+        src={getAsset(project.coverImage)}
         alt={`${project.title} — hero`}
         loading="lazy"
       />
@@ -67,7 +67,7 @@ const metadata = { title: project.title, description: project.summary };
           project.galleryImages.map((src) => (
             <img
               class="aspect-[4/3] w-full rounded-2xl object-cover"
-              src={getPermalink(src, 'asset')}
+              src={getAsset(src)}
               alt={`${project.title} — image`}
               loading="lazy"
             />
