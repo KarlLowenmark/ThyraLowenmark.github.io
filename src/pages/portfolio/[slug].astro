@@ -16,8 +16,9 @@ if (!project) {
 
 const metadata = { title: project.title, description: project.summary };
 
-// Robust for GitHub Pages base path; works for public/ assets everywhere
-const assetUrl = (p: string) => `${import.meta.env.BASE_URL}${String(p).replace(/^\/+/, '')}`;
+// Normalize BASE_URL so it always ends with "/"
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const assetUrl = (p: string) => `${base}${String(p).replace(/^\/+/, '')}`;
 ---
 
 <PageLayout metadata={metadata}>
