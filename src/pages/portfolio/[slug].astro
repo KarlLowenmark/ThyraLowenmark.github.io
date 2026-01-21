@@ -1,6 +1,6 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
-import { getPermalink, getAsset } from '~/utils/permalinks';
+import { getPermalink } from '~/utils/permalinks';
 import { portfolioProjects, getProjectBySlug } from '~/data/portfolio';
 
 export function getStaticPaths() {
@@ -15,6 +15,9 @@ if (!project) {
 }
 
 const metadata = { title: project.title, description: project.summary };
+
+// Robust for GitHub Pages base path; works for public/ assets everywhere
+const assetUrl = (p: string) => `${import.meta.env.BASE_URL}${String(p).replace(/^\/+/, '')}`;
 ---
 
 <PageLayout metadata={metadata}>
@@ -32,7 +35,7 @@ const metadata = { title: project.title, description: project.summary };
     <div class="mt-10 rounded-3xl border p-4">
       <img
         class="aspect-[16/10] w-full rounded-2xl object-cover"
-        src={getAsset(project.coverImage)}
+        src={assetUrl(project.coverImage)}
         alt={`${project.title} — hero`}
         loading="lazy"
       />
@@ -63,16 +66,14 @@ const metadata = { title: project.title, description: project.summary };
     <section class="mt-12">
       <h2 class="text-2xl font-semibold">Gallery</h2>
       <div class="mt-6 grid gap-4 sm:grid-cols-2">
-        {
-          project.galleryImages.map((src) => (
-            <img
-              class="aspect-[4/3] w-full rounded-2xl object-cover"
-              src={getAsset(src)}
-              alt={`${project.title} — image`}
-              loading="lazy"
-            />
-          ))
-        }
+        {project.galleryImages.map((src) => (
+          <img
+            class="aspect-[4/3] w-full rounded-2xl object-cover"
+            src={assetUrl(src)}
+            alt={`${project.title} — image`}
+            loading="lazy"
+          />
+        ))}
       </div>
     </section>
 
